@@ -22,13 +22,13 @@
 
 任选一种方式获取项目文件夹：
 
-- **方式 A（推荐，无需 git）**：在 GitHub 仓库页面点绿色的 **「Code」→「Download ZIP」**，下载后**解压**，得到一个 `yuketang-ai-assistant` 文件夹。
+- **方式 A（推荐，无需 git）**：在 GitHub 仓库页面点绿色的 **「Code」→「Download ZIP」**，下载后**解压**，得到一个 `yuketang-answer-helper` 文件夹。
 - **方式 B（会 git）**：
   ```bash
-  git clone https://github.com/你的用户名/yuketang-ai-assistant.git
+  git clone https://github.com/z12han28g/yuketang-answer-helper.git
   ```
 
-> ⚠️ 建议把解压出的 `yuketang-ai-assistant` 文件夹**复制到桌面**，方便下一步选择（也避免路径太深选错层级）。
+> ⚠️ 建议把解压出的 `yuketang-answer-helper` 文件夹**复制到桌面**，方便下一步选择（也避免路径太深选错层级）。
 
 ### 第二步：加载扩展
 
@@ -37,8 +37,8 @@
    - **Edge**：地址栏输入 `edge://extensions`
 2. 打开页面右上角的 **「开发者模式」** 开关。
 3. 点击 **「加载已解压的扩展程序」**（Edge 叫「加载解压缩的扩展」）。
-4. 在弹出的选择框里，**手动选中 `yuketang-ai-assistant` 文件夹**：
-   - 先定位到**上一级目录**（能看到 `yuketang-ai-assistant` 这个文件夹图标的层级）。
+4. 在弹出的选择框里，**手动选中 `yuketang-answer-helper` 文件夹**：
+   - 先定位到**上一级目录**（能看到 `yuketang-answer-helper` 这个文件夹图标的层级）。
    - **单击选中**该文件夹（不要双击进入），然后点 **「选择文件夹」**。
 5. 扩展列表出现 **「🛡️ 雨课堂 AI 答题助手」**，即加载成功。
 
@@ -80,7 +80,7 @@
 ## 📁 项目结构
 
 ```
-yuketang-ai-assistant/
+yuketang-answer-helper/
 ├── manifest.json        # 扩展配置（Manifest V3）
 ├── background.js        # 后台服务：调用 DeepSeek API（绕过 CORS）
 ├── content.js           # 页面注入：检测、抓题、展示答案
@@ -91,6 +91,7 @@ yuketang-ai-assistant/
 │   └── popup.js
 ├── icons/               # 扩展图标
 ├── LICENSE
+├── INSTALL.md
 └── README.md
 ```
 
