@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "雨课堂 AI 答题助手",
+  "version": "1.0.0",
+  "description": "检测雨课堂课堂练习，自动抓取题干和选项，并调用你自己的 DeepSeek API 给出答案与解析。",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "雨课堂 AI 答题助手",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.yuketang.cn/*",
+        "https://www.yuketang.cn/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://*.yuketang.cn/*",
+    "https://api.deepseek.com/*"
+  ],
+  "options_page": "popup/popup.html"
+}

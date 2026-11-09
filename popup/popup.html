@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>雨课堂 AI 答题助手</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>雨课堂 AI 答题助手</h1>
+      <p class="sub">自动检测课堂练习，抓题并（可选）AI 作答</p>
+    </header>
+
+    <!-- 是否使用 API -->
+    <div class="section-title">是否使用 AI</div>
+    <div class="field">
+      <label class="radio-row">
+        <input type="radio" name="mode" id="modeLocal" value="local">
+        <span><strong>不使用 API</strong>（纯本地）<br><small>只检测练习并抓取题干，不生成答案</small></span>
+      </label>
+      <label class="radio-row">
+        <input type="radio" name="mode" id="modeApi" value="api">
+        <span><strong>使用 API</strong>（AI 生成答案）<br><small>需填写 DeepSeek API Key</small></span>
+      </label>
+    </div>
+
+    <!-- API 配置（选了"使用 API"才显示） -->
+    <div id="apiConfig" class="hidden">
+      <div class="section-title">API 配置</div>
+      <div class="field">
+        <label for="apiKey">DeepSeek API Key</label>
+        <input type="password" id="apiKey" placeholder="sk-xxxxxxxxxxxxxxxx" autocomplete="off">
+        <button id="toggleKey" class="link-btn" type="button">显示</button>
+        <a href="https://platform.deepseek.com/api_keys" target="_blank" class="link-btn">获取 Key ↗</a>
+      </div>
+      <div class="field">
+        <label for="model">模型</label>
+        <select id="model">
+          <option value="deepseek-chat">deepseek-chat（通用对话，推荐）</option>
+          <option value="deepseek-reasoner">deepseek-reasoner（深度推理，更慢更贵）</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="apiUrl">API 地址（一般不用改）</label>
+        <input type="text" id="apiUrl" value="https://api.deepseek.com/chat/completions">
+      </div>
+
+      <!-- 作答方式 -->
+      <div class="section-title">作答方式</div>
+      <div class="field">
+        <label class="radio-row">
+          <input type="radio" name="submitMode" id="semiAuto" value="semi" checked>
+          <span><strong>半自动</strong><br><small>AI 给答案，手动填并提交</small></span>
+        </label>
+        <label class="radio-row">
+          <input type="radio" name="submitMode" id="fullAuto" value="full">
+          <span><strong>全自动</strong><br><small>AI 给答案，自动填并自动提交</small></span>
+        </label>
+      </div>
+      <div id="fullAutoHint" class="hint hidden">⚠️ AI 答案可能回答有误，全自动提交后请留意作答结果。</div>
+    </div>
+
+    <!-- 提醒设置 -->
+    <div class="section-title">提醒设置</div>
+    <div class="field">
+      <label class="radio-row">
+        <input type="checkbox" id="soundOn" checked>
+        <span><strong>声音提醒</strong><br><small>检测到练习 / 出答案时语音播报</small></span>
+      </label>
+    </div>
+
+    <button id="save" class="primary-btn">保存设置</button>
+
+    <div id="status" class="status"></div>
+
+    <footer>
+      <p>Key 仅保存在浏览器本地（chrome.storage），不会上传到任何服务器。</p>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

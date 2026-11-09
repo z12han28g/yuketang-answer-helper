@@ -1,0 +1,10 @@
+/* content.css —— 悬浮面板的补充样式（大部分样式在 content.js 内联，这里留作扩展点） */
+
+#__yktAIPanel {
+  /* 内联样式已覆盖核心外观，这里保证基础可读性 */
+  transition: opacity .2s ease;
+}
+
+#__yktAIPanel:hover {
+  opacity: 0.96;
+}
